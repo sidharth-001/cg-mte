@@ -69,7 +69,34 @@ void matches(int no){
 }
 
 void game_play(){
-	//some logic here
+	cleardevice();
+	int m =21, P ,C;  //m = matches-left, P = player's choice, C = computer's choice
+	char comp[100],msg[100];
+	while(1){
+		matches(m);
+		settextstyle(0,0,2);
+		outtextxy(50,250,"Pick 1,2,3 or 4 match sticks.");
+		cin>>P;
+		sprintf(msg," %d",P);
+		outtextxy(50,270,msg);
+		if(P<1||P>4){
+			outtextxy(50,270,"WRONG CHOICE !  Choose again.");
+			getch();
+			continue ;
+		}
+		m=m-P;
+		matches(m);
+		C=5-P;
+		sprintf(comp,"Computer Pick's  %d",C);
+		outtextxy(50,270,comp);
+		m=m-C;
+		getch();
+		if(m==1){
+			matches(m);
+			outtextxy(50,270,"You Loose");
+			break;
+		}
+	}
 }
 
 int main(){
